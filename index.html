@@ -1,0 +1,3278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdur Rouf | AI Researcher & CSE Engineer</title>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="https://img.icons8.com/fluency/48/artificial-intelligence.png"
+>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0f5132;
+    --primary-soft: #198754;
+    --accent: #75d69c;
+    --accent-2: #a8e6cf;
+    --accent-3: #d8f3dc;
+    --mint: #f0fdf4;
+    --dark: #052e16;
+    --ink: #1a2e25;
+    --muted: #5c7a6b;
+    --card-bg: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(15,81,50,0.06);
+    --shadow: 0 12px 40px -12px rgba(15,81,50,0.18);
+    --shadow-lg: 0 24px 60px -20px rgba(15,81,50,0.25);
+    --radius-sm: 14px;
+    --radius: 22px;
+    --radius-lg: 32px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background: #fbfefc;
+    text-align: justify;
+    letter-spacing: -0.01em;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+  p { margin-bottom: 1.3rem; }
+  a { text-decoration: none; color: inherit; transition: var(--transition); }
+  ul { list-style: none; }
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* ===== FLOATING NAVBAR ===== */
+  .navbar {
+    background: transparent;
+    padding: 18px 0;
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+  }
+  .navbar.scrolled { padding: 10px 0; }
+  .nav-inner {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 60px;
+    padding: 8px 8px 8px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(117,214,156,0.25);
+    transition: var(--transition);
+  }
+  .navbar.scrolled .nav-inner {
+    box-shadow: var(--shadow);
+    background: rgba(255,255,255,0.95);
+  }
+  .brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-dot {
+    width: 10px; height: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--primary-soft));
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 12px rgba(117,214,156,0.7);
+  }
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-menu a {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    border-radius: 50px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .nav-menu a:hover, .nav-menu a.active {
+    color: var(--primary);
+    background: var(--accent-3);
+  }
+  .nav-toggle {
+    display: none;
+    background: var(--primary);
+    border: none;
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 160px 0 100px;
+    position: relative;
+    overflow: hidden;
+    background: 
+      radial-gradient(circle at 15% 20%, rgba(168,230,207,0.55) 0%, transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(117,214,156,0.35) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(216,243,220,0.7) 0%, transparent 50%),
+      linear-gradient(180deg, #fbfefc 0%, #f0fdf4 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 10%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(117,214,156,0.25), transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; left: -5%;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(168,230,207,0.35), transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--accent-2);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-chip i { color: var(--accent); font-size: 0.9rem; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 18px;
+    letter-spacing: -0.04em;
+  }
+  .hero h1 .accent-name {
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-role {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-soft);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-role::before {
+    content: '';
+    width: 40px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    border-radius: 2px;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 34px;
+    text-align: left;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 34px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 32px;
+    border-radius: 60px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    letter-spacing: -0.01em;
+  }
+  .btn-fill {
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    box-shadow: 0 10px 24px -8px rgba(15,81,50,0.5);
+  }
+  .btn-fill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px -10px rgba(15,81,50,0.55);
+  }
+  .btn-ghost {
+    background: rgba(255,255,255,0.8);
+    color: var(--primary);
+    border: 1.5px solid var(--accent-2);
+  }
+  .btn-ghost:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-socials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hero-socials a {
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--accent-2);
+    color: var(--primary);
+    font-size: 1.05rem;
+    transition: var(--transition);
+  }
+  .hero-socials a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-4px) rotate(-6deg);
+    box-shadow: 0 10px 20px -6px rgba(15,81,50,0.4);
+  }
+
+  /* Hero photo */
+  .hero-photo-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-photo-blob {
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+    border-radius: 55% 45% 60% 40% / 55% 45% 55% 45%;
+    animation: morphBlob 12s ease-in-out infinite;
+    z-index: 0;
+    opacity: 0.9;
+  }
+  @keyframes morphBlob {
+    0%, 100% { border-radius: 55% 45% 60% 40% / 55% 45% 55% 45%; transform: rotate(0deg); }
+    50% { border-radius: 40% 60% 45% 55% / 50% 55% 45% 50%; transform: rotate(8deg); }
+  }
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-badge-float {
+    position: absolute;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+    border: 1px solid var(--accent-3);
+    animation: floatBadge 5s ease-in-out infinite;
+  }
+  .hero-badge-float i { color: var(--accent); }
+  .badge-1 { top: 10%; left: -6%; animation-delay: 0s; }
+  .badge-2 { bottom: 12%; right: -8%; animation-delay: 1.5s; }
+  .badge-3 { top: 55%; right: -12%; animation-delay: 3s; }
+  @keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ===== SECTION BASE ===== */
+  .section { padding: 90px 0; position: relative; }
+  .container-custom { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .sec-head {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .sec-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-3);
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 7px 18px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+  .sec-tag i { font-size: 0.85rem; }
+  .sec-head h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+    color: var(--dark);
+    margin-bottom: 14px;
+    font-weight: 800;
+  }
+  .sec-head p {
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 1.02rem;
+    text-align: center;
+  }
+
+  /* ===== ABOUT ===== */
+  .about { background: white; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-text p { color: var(--muted); font-size: 1.02rem; }
+  .about-photo {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-photo img { width: 100%; height: 420px; object-fit: cover; }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(15,81,50,0.35));
+  }
+  .about-photo-tag {
+    position: absolute;
+    bottom: 22px; left: 22px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  .about-photo-tag i { color: var(--accent); }
+  .focus-card {
+    background: linear-gradient(135deg, var(--mint), var(--accent-3));
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    margin-top: 26px;
+    border-left: 5px solid var(--accent);
+  }
+  .focus-card h4 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .focus-card h4 i { color: var(--accent); }
+  .focus-card p { color: var(--muted); margin-bottom: 0; font-size: 0.95rem; }
+
+  .approach-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .approach-mini {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 20px 18px;
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+    text-align: center;
+  }
+  .approach-mini:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-2);
+    box-shadow: var(--shadow);
+  }
+  .approach-mini i {
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .approach-mini h5 {
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .approach-mini p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ===== EDUCATION ===== */
+  .education { background: linear-gradient(180deg, var(--mint) 0%, #ffffff 100%); }
+  .edu-list { max-width: 900px; margin: 0 auto; position: relative; }
+  .edu-list::before {
+    content: '';
+    position: absolute;
+    left: 30px; top: 20px; bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-3), transparent);
+  }
+  .edu-item {
+    position: relative;
+    padding-left: 90px;
+    margin-bottom: 34px;
+  }
+  .edu-dot {
+    position: absolute;
+    left: 12px; top: 6px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 0.95rem;
+    box-shadow: 0 0 0 6px rgba(117,214,156,0.15);
+  }
+  .edu-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 26px 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+  }
+  .edu-card:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-2);
+  }
+  .edu-year {
+    display: inline-block;
+    background: var(--accent-3);
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+  }
+  .edu-card h3 {
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  .edu-card .edu-school {
+    color: var(--primary-soft);
+    font-weight: 500;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+  }
+  .edu-card .edu-detail {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .edu-card .edu-detail strong { color: var(--primary); }
+
+  /* ===== INTERESTS ===== */
+  .interests { background: white; }
+  .interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .interest-tile {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    border: 1.5px solid var(--accent-3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .interest-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--accent), var(--primary-soft));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .interest-tile:hover::before { transform: scaleX(1); }
+  .interest-tile:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-2);
+  }
+  .interest-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    transition: var(--transition);
+  }
+  .interest-tile:hover .interest-icon {
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    transform: rotate(-8deg) scale(1.08);
+  }
+  .interest-tile h3 {
+    font-size: 1.12rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .interest-tile p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  /* ===== PUBLICATIONS ===== */
+  .publications { background: linear-gradient(180deg, #ffffff 0%, var(--mint) 100%); }
+  .pub-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 46px;
+  }
+  .pub-filter {
+    padding: 10px 24px;
+    background: white;
+    border: 1.5px solid var(--accent-3);
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .pub-filter:hover, .pub-filter.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -6px rgba(15,81,50,0.4);
+  }
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 26px;
+  }
+  .pub-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 30px 30px 26px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .pub-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at bottom right, var(--accent-3), transparent 70%);
+    opacity: 0.6;
+  }
+  .pub-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .pub-badge {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .pub-badge.published { background: var(--accent-3); color: var(--primary); }
+  .pub-badge.accepted { background: #d1fae5; color: #065f46; }
+  .pub-badge.under-review { background: #fef3c7; color: #92400e; }
+  .pub-card h3 {
+    font-size: 1.08rem;
+    color: var(--dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .pub-authors {
+    font-size: 0.78rem;
+    color: var(--primary-soft);
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .pub-venue {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 14px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .pub-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .pub-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: var(--accent-3);
+    color: var(--primary);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+  .pub-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(4px);
+  }
+
+  .about-grid {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-text {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Individual Paragraph Cards */
+.about-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  border-radius: 20px;
+  padding: 30px 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
+}
+
+.about-card p {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* Professional Focus */
+.focus-card {
+  margin-top: 5px;
+  padding: 30px 40px;
+  border-radius: 20px;
+  background: rgba(128, 128, 128, 0.06);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  text-align: center;
+}
+
+.focus-card h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.focus-card p {
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Approach Cards */
+.approach-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.approach-mini {
+  padding: 25px 20px;
+  text-align: center;
+  border-radius: 16px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.approach-mini:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.approach-mini i {
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+}
+
+.approach-mini h5 {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+.approach-mini p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-card,
+  .focus-card {
+    padding: 25px 20px;
+  }
+
+  .about-card p {
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  .approach-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+  /* ===== Work media slider (multi-image) ===== */
+.work-media.slider {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.work-media.slider .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+.work-media.slider .slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.work-media.slider .work-play {
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 3;
+}
+.work-media.slider:hover .work-play {
+  opacity: 1;
+}
+.work-media.slider .work-media-overlay {
+  z-index: 2;
+}
+.slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+}
+.slider-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.slider-dots .dot.active {
+  background: white;
+  width: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.7);
+}
+.work-card:hover .work-play { opacity: 1; }
+  .works { background: white; }
+  .work-group {
+    background: linear-gradient(135deg, var(--mint), #ffffff);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    margin-bottom: 40px;
+    border: 1px solid var(--accent-3);
+  }
+  .work-group-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed var(--accent-2);
+  }
+  .work-group-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px -8px rgba(15,81,50,0.4);
+  }
+  .work-group-head h3 {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin: 0;
+    text-align: left;
+  }
+  .work-group-head p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 4px 0 0;
+    text-align: left;
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .work-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+  }
+  .work-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+  }
+  .work-media {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .work-media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .work-card:hover .work-media img { transform: scale(1.08); }
+  .work-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(5,46,22,0.65));
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    opacity: 0;
+    transition: var(--transition);
+  }
+  .work-card:hover .work-media-overlay { opacity: 1; }
+  .work-media-overlay span {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .work-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .work-card:hover .work-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .work-body { padding: 20px 22px; }
+  .work-body h4 {
+    font-size: 1.02rem;
+    color: var(--dark);
+    margin-bottom: 12px;
+    text-align: left;
+    line-height: 1.4;
+  }
+  .work-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    background: var(--accent-3);
+    color: var(--primary);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    justify-content: center;
+  }
+  .work-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  /* ===== CONFERENCES ===== */
+  .conferences { background: linear-gradient(180deg, var(--mint) 0%, #ffffff 100%); }
+  .conf-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    margin-bottom: 36px;
+    transition: var(--transition);
+  }
+  .conf-card:hover { box-shadow: var(--shadow); }
+  .conf-banner {
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    padding: 34px 34px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .conf-banner::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(168,230,207,0.3), transparent 70%);
+    border-radius: 50%;
+  }
+  .conf-banner-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+  .conf-banner h3 {
+    color: white;
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+    text-align: left;
+    line-height: 1.35;
+    position: relative;
+    z-index: 1;
+  }
+  .conf-banner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .conf-body { padding: 30px 34px 34px; }
+  .conf-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 22px; }
+  .conf-desc strong { color: var(--primary); }
+  .conf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 26px;
+    box-shadow: 0 8px 20px -8px rgba(15,81,50,0.45);
+  }
+  .conf-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px rgba(15,81,50,0.5); }
+
+  .gallery-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+  .gallery-label::before {
+    content: '';
+    width: 4px; height: 20px;
+    background: linear-gradient(180deg, var(--accent), var(--primary-soft));
+    border-radius: 2px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.1); }
+  .gallery-tag {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    padding: 4px 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+  }
+  .gallery-tag i { color: var(--accent); font-size: 0.7rem; }
+
+  /* ===== LEADERSHIP ===== */
+  .leadership { background: white; }
+  .leader-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+    margin-bottom: 40px;
+  }
+  .leader-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+  }
+  .leader-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+  .leader-img {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+  .leader-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+  .leader-card:hover .leader-img img { transform: scale(1.08); }
+  .leader-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(5,46,22,0.5));
+  }
+  .leader-tag {
+    position: absolute;
+    bottom: 14px; left: 14px;
+    background: rgba(255,255,255,0.95);
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .leader-tag i { color: var(--accent); }
+  .leader-body { padding: 22px 24px; }
+  .leader-body h4 {
+    font-size: 1.08rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  .leader-role {
+    color: var(--primary-soft);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .leader-desc { color: var(--muted); font-size: 0.88rem; margin: 0; text-align: left; line-height: 1.6; }
+
+  .activity-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .activity-tile {
+    background: linear-gradient(135deg, var(--mint), var(--accent-3));
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: var(--transition);
+    border: 1px solid var(--accent-2);
+  }
+  .activity-tile:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .activity-tile i {
+    width: 44px; height: 44px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .activity-tile h5 {
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+    text-align: left;
+  }
+  .activity-tile p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills { background: linear-gradient(180deg, #ffffff 0%, var(--mint) 100%); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+  }
+  .skill-box {
+    background: white;
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+  }
+  .skill-box:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--accent-2); }
+  .skill-box-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent-3);
+  }
+  .skill-box-head i {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+  .skill-box-head h4 {
+    font-size: 1.08rem;
+    color: var(--dark);
+    margin: 0;
+    text-align: left;
+  }
+  .skill-row { margin-bottom: 18px; }
+  .skill-row-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .skill-row-top .pct { color: var(--primary-soft); font-weight: 700; }
+  .skill-track {
+    height: 7px;
+    background: var(--accent-3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .lang-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .lang-tile {
+    background: white;
+    border-radius: var(--radius);
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+  }
+  .lang-tile:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .lang-flag { font-size: 2.4rem; }
+  .lang-name { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--dark); font-size: 1.05rem; }
+  .lang-level { color: var(--muted); font-size: 0.85rem; }
+
+  /* ===== ACHIEVEMENTS ===== */
+  .achievements { background: white; }
+  .award-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .award-card {
+    background: linear-gradient(135deg, var(--mint), #ffffff);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    text-align: center;
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .award-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(117,214,156,0.08), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .award-card:hover::before { opacity: 1; }
+  .award-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .award-icon {
+    width: 68px; height: 68px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin: 0 auto 20px;
+    box-shadow: 0 12px 24px -10px rgba(15,81,50,0.45);
+    position: relative;
+    z-index: 1;
+  }
+  .award-card h4 {
+    font-size: 1.08rem;
+    color: var(--dark);
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .award-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .course-tile {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px 24px 22px;
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .course-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--primary-soft));
+  }
+  .course-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-2);
+  }
+  .course-tile h5 {
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 8px;
+    text-align: left;
+    padding-left: 6px;
+  }
+  .course-tile .course-org {
+    font-size: 0.82rem;
+    color: var(--primary-soft);
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding-left: 6px;
+  }
+  .course-tile .course-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-left: 6px;
+  }
+
+  /* =======certificate======*/
+  .certificate-img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+
+.certificate-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.certificate-img:hover img {
+  transform: scale(1.05);
+}
+
+  /* ===== REFERENCES ===== */
+  .references { background: linear-gradient(180deg, var(--mint) 0%, #ffffff 100%); }
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .ref-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 1px solid var(--accent-3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .ref-card::after {
+    content: '\201C';
+    position: absolute;
+    top: 10px; right: 20px;
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    color: var(--accent-3);
+    line-height: 1;
+    opacity: 0.6;
+  }
+  .ref-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--accent-2); }
+  .ref-card h5 {
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .ref-role {
+    color: var(--primary-soft);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .ref-inst {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  .ref-lines { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+  .ref-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .ref-line i {
+    width: 28px; height: 28px;
+    background: var(--accent-3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact { background: white; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+  }
+  .contact-info-card {
+    background: linear-gradient(160deg, var(--primary) 0%, var(--primary-soft) 100%);
+    border-radius: var(--radius-lg);
+    padding: 40px 34px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .contact-info-card::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -20%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(168,230,207,0.25), transparent 70%);
+    border-radius: 50%;
+  }
+  .contact-info-card h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-info-card > p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.92rem;
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-line i {
+    width: 46px; height: 46px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+  }
+  .contact-line .lbl {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .contact-line .val {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .contact-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-socials a {
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: var(--transition);
+  }
+  .contact-socials a:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-4px);
+  }
+
+  .contact-form-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent-3);
+  }
+  .contact-form-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 26px;
+    text-align: left;
+  }
+  .form-field { margin-bottom: 18px; }
+  .form-field input, .form-field textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1.5px solid var(--accent-3);
+    border-radius: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--mint);
+    transition: var(--transition);
+    outline: none;
+  }
+  .form-field textarea { resize: vertical; min-height: 130px; }
+  .form-field input:focus, .form-field textarea:focus {
+    border-color: var(--accent);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(117,214,156,0.15);
+  }
+  .form-submit {
+    width: 100%;
+    padding: 16px 30px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 24px -10px rgba(15,81,50,0.5);
+  }
+  .form-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -12px rgba(15,81,50,0.55);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: linear-gradient(160deg, var(--dark) 0%, var(--primary) 100%);
+    color: white;
+    padding: 70px 0 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(117,214,156,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+  }
+  .footer h4 {
+    color: white;
+    font-size: 1.15rem;
+    margin-bottom: 22px;
+    text-align: left;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  .footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 36px; height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .footer-about-txt {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    text-align: left;
+  }
+  .footer-links-list { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links-list a {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+  }
+  .footer-links-list a i { color: var(--accent); font-size: 0.75rem; }
+  .footer-links-list a:hover {
+    color: white;
+    padding-left: 6px;
+  }
+  .footer-contact-list { display: flex; flex-direction: column; gap: 14px; }
+  .footer-contact-list div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.72);
+    font-size: 0.9rem;
+  }
+  .footer-contact-list i {
+    width: 34px; height: 34px;
+    background: rgba(117,214,156,0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-bottom a { color: var(--accent); }
+
+  /* ===== FLOATING SCROLL TOP ===== */
+  .scroll-top {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 12px 28px -8px rgba(15,81,50,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 999;
+  }
+  .scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .scroll-top:hover { transform: translateY(-4px); }
+
+  /* ===== MODALS ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,46,22,0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4);
+    animation: popIn 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.94) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 20px;
+    width: 40px; height: 40px;
+    background: var(--accent-3);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10;
+  }
+  .modal-close:hover { background: var(--primary); color: white; transform: rotate(90deg); }
+  .modal-title {
+    color: var(--dark);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    padding-right: 50px;
+    text-align: left;
+    line-height: 1.35;
+  }
+  .modal-authors {
+    color: var(--primary-soft);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .modal-venue {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-style: italic;
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+    border-bottom: 2px solid var(--accent-3);
+    text-align: left;
+  }
+  .modal-abstract h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+  .modal-abstract h4 i { color: var(--accent); }
+  .modal-abstract p {
+    color: var(--ink);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: justify;
+  }
+  .modal-content-text {
+    color: var(--ink);
+    font-size: 0.95rem;
+    line-height: 1.85;
+    white-space: pre-line;
+    text-align: justify;
+  }
+
+  .media-box {
+    background: transparent;
+    max-width: 1000px;
+    padding: 0;
+    position: relative;
+  }
+  .media-box img, .media-box video {
+    width: 100%;
+    max-height: 84vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
+  }
+  .media-close {
+    position: absolute;
+    top: -56px; right: 0;
+    width: 44px; height: 44px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  .media-close:hover { background: var(--accent); color: white; transform: rotate(90deg); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 992px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+    .hero-role, .hero-desc { text-align: center; }
+    .hero-role { justify-content: center; }
+    .hero-actions, .hero-socials { justify-content: center; }
+    .hero-photo { width: 280px; height: 280px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { order: -1; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; align-items: center; justify-content: center; }
+    .nav-inner { padding: 8px 8px 8px 22px; }
+  }
+  @media (max-width: 768px) {
+    .section { padding: 70px 0; }
+    .hero { padding: 130px 0 70px; }
+    .approach-cards { grid-template-columns: 1fr; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .edu-item { padding-left: 76px; }
+    .edu-list::before { left: 22px; }
+    .edu-dot { left: 4px; width: 34px; height: 34px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 34px; }
+    .hero-badge-float { display: none; }
+    .modal-box { padding: 28px 22px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .container-custom { padding: 0 18px; }
+    .hero-photo { width: 240px; height: 240px; }
+    .work-group { padding: 26px 20px; }
+    .conf-banner, .conf-body { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container-custom">
+    <div class="nav-inner">
+      <a href="#home" class="brand">
+        <span class="brand-dot"></span> Abdur Rouf
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Research</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#conferences">Conferences</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="container-custom">
+    <div class="hero-grid">
+      <div class="hero-text" data-aos="fade-right">
+        <div class="hero-chip"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Available for Research Collaboration</div>
+        <h1>Hi, I'm <span class="accent-name">Abdur Rouf</span></h1>
+        <div class="hero-role">Computer Science Engineer &amp; AI Researcher</div>
+        <p class="hero-desc">Specializing in Machine Learning, Deep Learning, Computer Vision, Medical Image Analysis, Explainable AI (XAI), NLP, LLMs, RAG, and MLOps — building intelligent, explainable systems for real-world impact.</p>
+        <div class="hero-actions">
+          <a href="#publications" class="btn btn-fill"><i class="fas fa-flask"></i> View Research</a>
+          <a href="#contact" class="btn btn-ghost"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/ab-rouf" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/Ab-Rouf" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://scholar.google.com/citations?user=lswj4ekAAAAJ&hl=en" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="https://www.researchgate.net/profile/Abdur-Rouf-8/publications" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+          <a href="https://huggingface.co/abdurrouf14" title="Hugging Face"><i class="fas fa-robot"></i></a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap" data-aos="fade-left">
+        <div class="hero-photo-blob"></div>
+        <img src="image/font.jpg" alt="Abdur Rouf" class="hero-photo">
+        <div class="hero-badge-float badge-1"><i class="fas fa-award"></i> MDPI Published</div>
+        <div class="hero-badge-float badge-2"><i class="fas fa-microscope"></i> IEEE Author</div>
+        <div class="hero-badge-float badge-3"><i class="fas fa-brain"></i> XAI Researcher</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+  <div class="container-custom">
+
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag">
+        <i class="fas fa-user"></i> About Me
+      </span>
+      <h2>Background &amp; Philosophy</h2>
+      <p>Learn about my research journey, work approach, and what drives my passion for AI</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text" data-aos="fade-up">
+
+        <!-- Main About Card -->
+        <div class="about-card">
+
+          <p>
+            I am a dedicated researcher and quick learner who strives to acquire
+            new knowledge daily from real-life problems. My approach to work is
+            focused and methodical — I prefer to concentrate on one task at a time,
+            dedicating all my attention to it until completion. This focused approach
+            allows me to solve problems effectively and efficiently.
+          </p>
+
+          <p>
+            My research spans Computer Vision, Medical Image Analysis, Explainable AI,
+            NLP, Multimodal AI, LLMs, RAG, and MLOps. I completed professional
+            internships at bongoDev, Byte Care Limited, Phitron, and the ICT Division
+            of Bangladesh, developing solutions in AI-driven healthcare, agriculture,
+            and intelligent systems.
+          </p>
+
+          <!-- Professional Focus -->
+          <div class="focus-card">
+            <h4>
+              <i class="fas fa-lightbulb"></i>
+              Professional Focus
+            </h4>
+
+            <p>
+              I believe in the power of explainable AI to solve real-world problems,
+              particularly in medical imaging and sustainable agriculture. My work
+              focuses on creating practical, interpretable, and efficient solutions
+              that can make a meaningful impact on society.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Approach Cards -->
+        <div class="approach-cards">
+
+          <div class="approach-mini">
+            <i class="fas fa-bullseye"></i>
+            <h5>Focused</h5>
+            <p>
+              Full concentration on one task at a time for high-quality results.
+            </p>
+          </div>
+
+          <div class="approach-mini">
+            <i class="fas fa-puzzle-piece"></i>
+            <h5>Systematic</h5>
+            <p>
+              Breaking complex problems into manageable components.
+            </p>
+          </div>
+
+          <div class="approach-mini">
+            <i class="fas fa-seedling"></i>
+            <h5>Learning</h5>
+            <p>
+              Continuously acquiring new skills applied to real challenges.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- EDUCATION -->
+<section id="education" class="section education">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-graduation-cap"></i> Education</span>
+      <h2>Academic Journey</h2>
+      <p>My qualifications and academic background</p>
+    </div>
+    <div class="edu-list">
+      <div class="edu-item" data-aos="fade-up">
+        <div class="edu-dot"><i class="fas fa-university"></i></div>
+        <div class="edu-card">
+          <span class="edu-year">Sep 2021 – Oct 2025</span>
+          <h3>B.Sc. in Computer Science and Engineering</h3>
+          <div class="edu-school">Dhaka University of Engineering &amp; Technology (DUET), Gazipur</div>
+          <div class="edu-detail">
+            <strong>Thesis:</strong> A Smart Line-Following Robot for Emergency Medical Supply and Real-Time Tracking using RFID<br>
+            <strong>Supervisor:</strong> Prof. Mohammad Abdur Rouf, PhD
+          </div>
+        </div>
+      </div>
+      <div class="edu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="edu-dot"><i class="fas fa-laptop-code"></i></div>
+        <div class="edu-card">
+          <span class="edu-year">Diploma</span>
+          <h3>Diploma in Computer Technology</h3>
+          <div class="edu-school">Tangail Polytechnic Institute, Tangail, Bangladesh</div>
+          <div class="edu-detail">Gained practical knowledge in computer hardware, software, networking, and programming.</div>
+        </div>
+      </div>
+      <div class="edu-item" data-aos="fade-up" data-aos-delay="100">
+  <div class="edu-dot"><i class="fas fa-school"></i></div>
+  <div class="edu-card">
+    <span class="edu-year">S.S.C</span>
+    <h3>Secondary School Certificate — Science</h3>
+    <div class="edu-school">Bangshai School and College, Mirzapur, Tangail, Bangladesh</div>
+    <div class="edu-detail">Completed my Secondary School Certificate (S.S.C) in the <strong>Science</strong> group. Built a strong foundation in mathematics, physics, chemistry, and biology while developing early interest in computer technology and problem-solving skills.</div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests" class="section interests">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-compass"></i> Research Interests</span>
+      <h2>Areas I Explore</h2>
+      <p>Focus areas for current and future research</p>
+    </div>
+    <div class="interest-grid">
+      <div class="interest-tile" data-aos="fade-up" data-aos-delay="100">
+        <div class="interest-icon"><i class="fas fa-leaf"></i></div>
+        <h3>AI for Agriculture &amp; Plant Health</h3>
+        <p>Deep learning for plant disease detection from leaf images, nitrogen status classification, chlorophyll-based quality assessment, and precision agriculture solutions for crops like rice, potato, onion, eggplant, and brinjal.</p>
+      </div>
+      <div class="interest-tile" data-aos="fade-up" data-aos-delay="150">
+        <div class="interest-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Medical Image Analysis</h3>
+        <p>Deep learning for medical imaging such as CT and X-ray analysis, organ segmentation, tumor detection, and lung disease classification with clinical decision support systems.</p>
+      </div>
+      <div class="interest-tile" data-aos="fade-up" data-aos-delay="200">
+        <div class="interest-icon"><i class="fas fa-eye"></i></div>
+        <h3>Computer Vision &amp; Explainable AI</h3>
+        <p>Building interpretable deep learning models with XAI techniques for high-stakes domains — providing transparency, visual explanations, and trust for real-world deployment.</p>
+      </div>
+      <div class="interest-tile" data-aos="fade-up" data-aos-delay="250">
+        <div class="interest-icon"><i class="fas fa-language"></i></div>
+        <h3>NLP, LLMs &amp; Retrieval-Augmented Generation</h3>
+        <p>Natural Language Processing, Large Language Models, multimodal AI, and RAG-based systems for intelligent guidance — including farmer assistance and clinical decision support.</p>
+      </div>
+      <div class="interest-tile" data-aos="fade-up" data-aos-delay="300">
+        <div class="interest-icon"><i class="fas fa-cogs"></i></div>
+        <h3>MLOps &amp; Production Deployment</h3>
+        <p>Machine Learning Operations, model monitoring, scalable deployment, and production-ready AI pipelines using MLflow, Docker, and cloud platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section publications">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-book"></i> Publications</span>
+      <h2>Research Publications</h2>
+      <p>Click "View Details" to read the full abstract of each paper</p>
+    </div>
+    <div class="pub-filters" data-aos="fade-up" data-aos-delay="100">
+      <button class="pub-filter active" data-filter="all">All Papers</button>
+      <button class="pub-filter" data-filter="published">Published</button>
+      <button class="pub-filter" data-filter="accepted">Accepted</button>
+      <button class="pub-filter" data-filter="under-review">Under Review</button>
+    </div>
+    <div class="pub-grid">
+
+      <div class="pub-card" data-category="published" data-aos="fade-up">
+        <span class="pub-badge published">Published · MDPI 2026</span>
+        <h3>Global-Local Feature-Based Rice Leaf Disease Classification Using Two-Stream Deep Neural Network Feature Fusion</h3>
+        <div class="pub-authors">Md Nahidur Rahaman, Abdullah Al Mamun, Md. Kamal Hossen, Abdur Rouf, Tumpa Rani Shah, Jungpil Shin, Mohd. Nizam Husen, and Abu Saleh Musa Miah</div>
+        <div class="pub-venue">Computers, MDPI, 2026</div>
+        <p class="pub-desc">Two-stream deep neural network feature fusion approach for rice leaf disease classification using global and local features.</p>
+        <button class="pub-btn" data-paper-index="0"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="published" data-aos="fade-up" data-aos-delay="50">
+        <span class="pub-badge accepted">Published · IEEE QPAIN 2026</span>
+        <h3>A Smart Line-Following Robot for Emergency Medical Supply and Real-Time Tracking using RFID</h3>
+        <div class="pub-authors">Abdur Rouf, Osama Abdul Hannan, Abdulla Al-Kibria, and Mohammad Abdur Rouf</div>
+        <div class="pub-venue">2026 IEEE 2nd Int'l Conf. on Quantum Photonics, AI &amp; Networking (QPAIN)</div>
+        <p class="pub-desc">Autonomous robot for emergency medical supply delivery with RFID-based real-time tracking.</p>
+        <button class="pub-btn" data-paper-index="1"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="accepted" data-aos="fade-up" data-aos-delay="100">
+        <span class="pub-badge accepted">Accepted · IEEE BECITHCON 2026</span>
+        <h3>DLRA-MSTFNet: Explainable Lung Disease Classification from Chest X-ray Images with RAG-Based Clinical Guidance</h3>
+        <div class="pub-authors">Md Nahidur Rahaman, Abdur Rouf, Raju Mia, S. M. Abdullah Al Shuaeb, and Ferdaus Anam Jibon</div>
+        <div class="pub-venue">2026 IEEE Int'l Conf. on Biomedical Engineering, Computer and IT for Health (BECITHCON)</div>
+        <p class="pub-desc">Explainable lung disease classification with retrieval-augmented clinical guidance.</p>
+        <button class="pub-btn" data-paper-index="2"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="under-review" data-aos="fade-up">
+        <span class="pub-badge under-review">Under Review · Image and Vision Computing</span>
+        <h3>A Dynamic Lesion-Aware Multi-Scale Deep Learning Framework for Explainable Nitrogen Status Classification in Eggplant Leaves</h3>
+        <div class="pub-authors">Abdur Rouf, Md Nahidur Rahaman, Raju Mia, and S. M. Abdullah Al Shuaeb</div>
+        <div class="pub-venue">Image and Vision Computing, 2026</div>
+        <p class="pub-desc">Lesion-aware multi-scale framework for nitrogen status classification in eggplant leaves with explainability.</p>
+        <button class="pub-btn" data-paper-index="3"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="accepted" data-aos="fade-up" data-aos-delay="50">
+        <span class="pub-badge accepted">accepted · IEEE CSDE 2026</span>
+        <h3>A Hybrid Multi-Backbone Deep Learning Framework with Learnable Attention Fusion for Explainable Potato Leaf Disease Detection</h3>
+        <div class="pub-authors">Md. Nahidur Rahaman, Abdur Rouf, S. M. Abdullah Al Shuaeb, Jahid Hasan Rony, Mohammad Ariful Islam, Muhammad Aminur Rahaman, Saiful Saiful, and Abdullah Al Mamun</div>
+        <div class="pub-venue">IEEE CSDE 2026</div>
+        <p class="pub-desc">Hybrid multi-backbone framework with learnable attention fusion for potato leaf disease detection.</p>
+        <button class="pub-btn" data-paper-index="4"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="accepted" data-aos="fade-up" data-aos-delay="100">
+        <span class="pub-badge accepted">accepted · IEEE CSDE 2026</span>
+        <h3>An Intelligent Multi-Scale Lesion Attention Transformer Framework with Retrieval-Augmented Farmer Guidance for Onion Leaf Disease Diagnosis</h3>
+        <div class="pub-authors">Abdur Rouf, Md Nahidur Rahaman, S. M. Abdullah Al Shuaeb, Jahid Hasan Rony, Mohammad Ariful Islam, Muhammad Aminur Rahaman, Saiful Saiful, and Abdullah Al Mamun</div>
+        <div class="pub-venue">IEEE CSDE 2026</div>
+        <p class="pub-desc">Lesion attention transformer with RAG-based farmer guidance for onion leaf disease diagnosis.</p>
+        <button class="pub-btn" data-paper-index="5"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+      <div class="pub-card" data-category="under-review" data-aos="fade-up" data-aos-delay="150">
+        <span class="pub-badge under-review">Under Review · Data in Brief</span>
+        <h3>An Image-Based Brinjal Dataset for Nitrogen Deficiency Detection and Chlorophyll-Based Quality Assessment in Bangladesh</h3>
+        <div class="pub-authors">Md. Nahidur Rahaman, Abdur Rouf, S. M. Abdullah Al Shuaeb, Raju Mia, and Md. Mizanur Rahman</div>
+        <div class="pub-venue">Data in Brief, 2026</div>
+        <p class="pub-desc">A novel image-based brinjal dataset for nitrogen deficiency detection and chlorophyll-based quality assessment.</p>
+        <button class="pub-btn" data-paper-index="6"><i class="fas fa-file-alt"></i> View Details</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works" class="section works">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-flask"></i> My Works</span>
+      <h2>Research &amp; Innovation Works</h2>
+      <p>Explore my projects by domain — click any image to view full size, click About to learn more</p>
+    </div>
+
+    <!-- ============ 1. AGRICULTURE AI ============ -->
+    <div class="work-group" data-aos="fade-up">
+      <div class="work-group-head">
+        <div class="work-group-icon"><i class="fas fa-leaf"></i></div>
+        <div>
+          <h3>AI for Agriculture &amp; Plant Health</h3>
+          <p>Plant disease detection, nitrogen classification &amp; precision farming</p>
+        </div>
+      </div>
+      <div class="work-grid">
+
+        <!-- Potato Leaf Disease -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/potato1.png" alt="Potato Leaf Disease">
+            <img class="slide" src="image/potato2.png" alt="Potato Leaf">
+            <img class="slide" src="image/potato3.png" alt="Plant Disease">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Potato Leaf Disease Classification</h4>
+            <button class="work-btn" onclick="openInfo('Potato Leaf Disease Classification','Developed a hybrid framework integrating Swin Transformer, Vision Transformer, and EfficientNetV2 for automated potato leaf disease classification with explainable AI. The model achieves high accuracy on potato leaf disease datasets and provides interpretable heatmaps to help farmers understand which parts of the leaf are affected. This work is part of an ongoing research effort toward smart agriculture solutions.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+        <!-- Onion Leaf Disease -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/onion4.png" alt="Onion Leaf Disease">
+            <img class="slide" src="image/onion1.png" alt="Onion Field">
+            <img class="slide" src="image/onion3.png" alt="Onion Crop">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Onion Leaf Disease Detection</h4>
+            <button class="work-btn" onclick="openInfo('Onion Leaf Disease Detection','An intelligent multi-scale lesion attention transformer framework with retrieval-augmented farmer guidance for onion leaf disease diagnosis. The transformer architecture incorporates lesion attention mechanisms to focus on diseased regions at multiple scales. Additionally, a RAG module retrieves relevant agricultural knowledge to provide actionable guidance to farmers. This paper is currently under review at IEEE CSDE 2026.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+        <!-- Brinjal / Eggplant Nitrogen -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/brinjal1.png" alt="Eggplant Leaf">
+            <img class="slide" src="image/brinjal2.png" alt="Brinjal Plant">
+            <img class="slide" src="image/brinjal3.png" alt="Brinjal Crop">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Brinjal / Eggplant Nitrogen Detection</h4>
+            <button class="work-btn" onclick="openInfo('Brinjal / Eggplant Nitrogen Detection','A dynamic lesion-aware multi-scale deep learning framework for explainable nitrogen status classification in eggplant leaves. The model adaptively focuses on lesion regions and extracts features at multiple scales to accurately assess nitrogen deficiency. Also developed an image-based brinjal dataset for nitrogen deficiency detection and chlorophyll-based quality assessment in Bangladesh. This work is under review at Image and Vision Computing and Data in Brief.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+        <!-- Rice Leaf Disease -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/rice1.png" alt="Rice Leaf">
+            <img class="slide" src="image/rice2.png" alt="Rice Field">
+            <img class="slide" src="image/rice3.png" alt="Rice Crop">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Rice Leaf Disease Classification</h4>
+            <button class="work-btn" onclick="openInfo('Rice Leaf Disease Classification','Global-local feature-based rice leaf disease classification using a two-stream deep neural network feature fusion approach. By combining global and local features extracted from rice leaf images, the model achieves robust and accurate disease classification. Published in Computers, MDPI 2026.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ 2. MEDICAL & CV ============ -->
+    <div class="work-group" data-aos="fade-up" data-aos-delay="100">
+      <div class="work-group-head">
+        <div class="work-group-icon"><i class="fas fa-heartbeat"></i></div>
+        <div>
+          <h3>Medical Imaging &amp; Computer Vision</h3>
+          <p>Explainable AI for healthcare and clinical decision support</p>
+        </div>
+      </div>
+      <div class="work-grid">
+
+        <!-- Lung Disease -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/pneomonea1.png" alt="Chest X-ray">
+            <img class="slide" src="image/pneomonea2.png" alt="Lung Disease">
+            <img class="slide" src="image/pneomone3.png" alt="Medical AI">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Explainable Lung Disease Classification</h4>
+            <button class="work-btn" onclick="openInfo('Explainable Lung Disease Classification','DLRA-MSTFNet: a hybrid deep learning model for explainable lung disease classification from chest X-ray images with RAG-based clinical guidance. The system not only classifies diseases with high accuracy but also provides clinical guidance through retrieval-augmented generation, making it useful for doctors and healthcare professionals in decision-making. Accepted at IEEE BECITHCON 2026.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+        
+
+        <!-- Line-Following Robot -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/lfr1.png" alt="Line-Following Robot">
+            <img class="slide" src="image/lfr2.png" alt="Robot">
+            <img class="slide" src="image/lfr3.png" alt="Medical Robot">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>Smart Line-Following Robot</h4>
+            <button class="work-btn" onclick="openInfo('Smart Line-Following Robot','B.Sc. Thesis project — an autonomous line-following robot designed for emergency medical supply delivery with real-time RFID-based tracking. The system navigates predefined paths to transport medical supplies in hospitals and clinics, reducing human effort and delivery time. It uses IR sensors for line detection, an RFID reader for location tracking, and a microcontroller for decision-making. Accepted at IEEE QPAIN 2026.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+
+        
+      
+
+    <!-- ============ 4. AUTOMATION & EMBEDDED ============ -->
+    <div class="work-group" data-aos="fade-up" data-aos-delay="300">
+      <div class="work-group-head">
+        <div class="work-group-icon"><i class="fas fa-microchip"></i></div>
+        <div>
+          <h3>Automation &amp; Intelligent Systems</h3>
+          <p>IoT, robotics, cybersecurity, and smart device development</p>
+        </div>
+      </div>
+      <div class="work-grid">
+
+        <!-- IoT Robotics -->
+        <div class="work-card">
+          <div class="work-media slider" data-slider>
+            <img class="slide active" src="image/lfr1.png" alt="IoT">
+            <img class="slide" src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&h=500&fit=crop" alt="Robotics">
+            <img class="slide" src="image/bl1.png" alt="Embedded">
+            <div class="work-play" onclick="openMedia(this.parentElement.querySelector('.slide.active').src,'image')"><i class="fas fa-expand"></i></div>
+            <div class="work-media-overlay"><span><i class="fas fa-search-plus"></i> View Full Image</span></div>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+          <div class="work-body">
+            <h4>IoT &amp; Robotics Projects</h4>
+            <button class="work-btn" onclick="openInfo('IoT & Robotics Projects','As IoT and Robotics Secretary of DUET Computer Society (DUET-CS), I contributed to planning, coordination, and execution of technical activities and initiatives related to IoT and Robotics, including workshops, competitions, and hands-on projects.')"><i class="fas fa-info-circle"></i> About</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section id="conferences" class="section conferences">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-microphone"></i> Conferences</span>
+      <h2>Conference &amp; Seminar Participation</h2>
+      <p>Academic events where I presented research and received recognition</p>
+    </div>
+
+    <!-- QPAIN -->
+    <div class="conf-card" data-aos="fade-up">
+      <div class="conf-banner">
+        <span class="conf-banner-tag"><i class="fas fa-award"></i> IEEE QPAIN 2026</span>
+        <h3>2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence &amp; Networking</h3>
+        <p>International Conference | Quantum Photonics | AI | Networking</p>
+      </div>
+      <div class="conf-body">
+        <p class="conf-desc">The <strong>2026 IEEE QPAIN</strong> brings together leading researchers, scientists, and industry professionals to explore cutting-edge advancements in quantum photonics, AI, and networking technologies. <strong>Participation Highlights:</strong> Presented research on a smart line-following robot for emergency medical supply and real-time tracking using RFID. Engaged in technical discussions and collaborated with international researchers.</p>
+        <button class="conf-btn" onclick="openConfAbstract(0)"><i class="fas fa-file-alt"></i> View Paper Abstract</button>
+        <div class="gallery-label">📸 Conference Gallery (IEEE QPAIN 2026)</div>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openMedia('image/lfr_cr.PNG','image')">
+            <img src="image/lfr_cr.PNG" alt="Keynote">
+            <span class="gallery-tag"><i class="fas fa-microphone"></i> Certificate</span>
+          </div>
+          <div class="gallery-item" onclick="openMedia('image/qpain2.png','image')">
+            <img src="image/qpain2.png" alt="Presentation">
+            <span class="gallery-tag"><i class="fas fa-microphone"></i> Group</span>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- BECITHCON -->
+    <div class="conf-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="conf-banner">
+        <span class="conf-banner-tag"><i class="fas fa-heartbeat"></i> IEEE BECITHCON 2026</span>
+        <h3>2026 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health</h3>
+        <p>International Conference | Biomedical Engineering | Health Informatics</p>
+      </div>
+      <div class="conf-body">
+        <p class="conf-desc">Accepted paper on <strong>DLRA-MSTFNet: Explainable Lung Disease Classification from Chest X-ray Images with RAG-Based Clinical Guidance</strong>. This conference focuses on AI-driven healthcare and explainable medical image analysis.</p>
+        <button class="conf-btn" onclick="openConfAbstract(1)"><i class="fas fa-file-alt"></i> View Paper Abstract</button>
+        <div class="gallery-label">📸 Conference Gallery (IEEE BECITHCON 2026)</div>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openMedia('image/x_ray_cr.png','image')">
+            <img src="image/x_ray_cr.png" alt="Keynote">
+            <span class="gallery-tag"><i class="fas fa-microphone"></i> Certifiate</span>
+          </div>
+          <div class="gallery-item" onclick="openMedia('image/x_ray1.png','image')">
+            <img src="image/x_ray1.png" alt="Presentation">
+            <span class="gallery-tag"><i class="fas fa-chalkboard"></i> Presentation</span>
+          </div>
+          
+          <div class="gallery-item" onclick="openMedia('image/x_ray2.png','image')">
+            <img src="image/x_ray2.png" alt="Group">
+            <span class="gallery-tag"><i class="fas fa-camera"></i> Group</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="section leadership">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-users"></i> Leadership</span>
+      <h2>Leadership &amp; Activities</h2>
+      <p>Community engagement, technical leadership &amp; collaborative initiatives</p>
+    </div>
+    <div class="leader-grid">
+      <div class="leader-card" data-aos="fade-up">
+        <div class="leader-img">
+          <img src="image/sec1.png" alt="IoT Robotics Secretary">
+          <span class="leader-tag"><i class="fas fa-microchip"></i> Technical Role</span>
+        </div>
+        <div class="leader-body">
+          <h4>IoT &amp; Robotics Secretary</h4>
+          <div class="leader-role">DUET Computer Society (DUET-CS)</div>
+          <p class="leader-desc">Contributed to the planning, coordination, and execution of technical activities and initiatives related to IoT and Robotics.</p>
+        </div>
+      </div>
+      <div class="leader-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="leader-img">
+          <img src="image/iupc1.png" alt="IUPC Volunteer">
+          <span class="leader-tag"><i class="fas fa-hands-helping"></i> Volunteer</span>
+        </div>
+        <div class="leader-body">
+          <h4>Volunteer — DUET IUPC 2025</h4>
+          <div class="leader-role">Inter-University Programming Contest</div>
+          <p class="leader-desc">Assisted with event coordination, participant support, and the smooth execution of the programming contest.</p>
+        </div>
+      </div>
+      <div class="leader-card" data-aos="fade-up" data-aos-delay="200">
+        
+
+  <div class="leader-img">
+
+    <img src="image/ncim.png" alt="NCIM 2025 Volunteer">
+
+    <span class="leader-tag">
+      <i class="fas fa-hands-helping"></i> Volunteer
+    </span>
+
+  </div>
+
+  <div class="leader-body">
+
+    <h4>Volunteer — NCIM 2025</h4>
+
+    <div class="leader-role">
+      International Conference on Next-Generation Computing, IoT and Machine Learning
+    </div>
+
+    <p class="leader-desc">
+      Assisted with event coordination, participant support, and the
+      successful execution of NCIM 2025.
+    </p>
+
+  </div>
+
+</div>
+    </div>
+
+    <div class="activity-tiles">
+      <div class="activity-tile" data-aos="fade-up">
+        <i class="fas fa-users"></i>
+        <div>
+          <h5>Workshops &amp; Seminars</h5>
+          <p> ML, MLOps</p>
+        </div>
+      </div>
+      <div class="activity-tile" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-flask"></i>
+        <div>
+          <h5>Collaborative Research</h5>
+          <p>AI healthcare, agriculture</p>
+        </div>
+      </div>
+      <div class="activity-tile" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-graduation-cap"></i>
+        <div>
+          <h5>Academic Activities</h5>
+          <p>AI, ML, DL, and Computer Vision research</p>
+        </div>
+      </div>
+      <div class="activity-tile" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-hands-helping"></i>
+        <div>
+          <h5>Community Service</h5>
+          <p>Volunteering and technical event coordination</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section skills">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-cog"></i> Skills</span>
+      <h2>Technical Expertise</h2>
+      <p>My proficiency across various technologies and domains</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <!-- Programming Languages -->
+      <div class="skill-box" data-aos="fade-up">
+        <div class="skill-box-head">
+          <i class="fas fa-code"></i>
+          <h4>Programming Languages</h4>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top"><span>Python</span></div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top"><span>C / C++</span></div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top"><span>HTML, CSS, JS, PHP</span></div>
+        </div>
+      </div>
+
+
+      <!-- AI / Machine Learning -->
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-box-head">
+          <i class="fas fa-brain"></i>
+          <h4>AI / Machine Learning</h4>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>Machine Learning &amp; Deep Learning</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>Computer Vision</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>NLP, LLMs &amp; RAG</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>Explainable AI (XAI)</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>MLOps, MLflow &amp; Monitoring</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Frameworks & Tools -->
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-box-head">
+          <i class="fas fa-tools"></i>
+          <h4>Frameworks &amp; Tools</h4>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>PyTorch &amp; TensorFlow</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>Scikit-learn, OpenCV, Transformers</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>LangChain, FastAPI, Gradio</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-row-top">
+            <span>Git, Linux, Docker, AWS, Power BI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Languages -->
+    <div class="lang-tiles">
+      <div class="lang-tile" data-aos="fade-up">
+        <div class="lang-flag">🇧🇩</div>
+        <div>
+          <div class="lang-name">Bengali</div>
+          <div class="lang-level">Mother tongue</div>
+        </div>
+      </div>
+
+      <div class="lang-tile" data-aos="fade-up" data-aos-delay="100">
+        <div class="lang-flag">🇬🇧</div>
+        <div>
+          <div class="lang-name">English</div>
+          <div class="lang-level">Fluent (L/R/W/S)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<<!-- CERTIFICATES -->
+<div class="sec-head" style="margin-top:20px;" data-aos="fade-up">
+  <h2 style="font-size:1.7rem;">Certificates &amp; Recognition</h2>
+</div>
+
+<div class="courses-grid">
+
+  <!-- MDPI Certificate -->
+  <div class="course-tile" data-aos="fade-up">
+    <div class="certificate-img">
+      <img
+        src="image/rice_cr.png"
+        alt="MDPI Computers Certificate"
+        onclick="openMedia(this.src,'image')"
+      >
+    </div>
+
+    <h5>Published Research — Computers, MDPI</h5>
+    <div class="course-org">MDPI</div>
+    <div class="course-date">2026</div>
+  </div>
+
+
+  <!-- IEEE QPAIN Certificate -->
+  <div class="course-tile" data-aos="fade-up" data-aos-delay="100">
+    <div class="certificate-img">
+      <img
+        src="image/lfr_cr.png"
+        alt="IEEE QPAIN 2026 Certificate"
+        onclick="openMedia(this.src,'image')"
+      >
+    </div>
+
+    <h5>IEEE QPAIN 2026</h5>
+    <div class="course-org">IEEE Conference</div>
+    <div class="course-date">2026</div>
+  </div>
+
+
+  <!-- IEEE BECITHCON Certificate -->
+  <div class="course-tile" data-aos="fade-up" data-aos-delay="200">
+    <div class="certificate-img">
+      <img
+        src="image/x_ray_cr.png"
+        alt="IEEE BECITHCON 2026 Certificate"
+        onclick="openMedia(this.src,'image')"
+      >
+    </div>
+
+    <h5>IEEE BECITHCON 2026</h5>
+    <div class="course-org">IEEE Conference</div>
+    <div class="course-date">2026</div>
+  </div>
+
+
+  <!-- MLOps Certificate -->
+  <div class="course-tile" data-aos="fade-up" data-aos-delay="300">
+    <div class="certificate-img">
+      <img
+        src="image/ml.png"
+        alt="MLOps Certificate"
+        onclick="openMedia(this.src,'image')"
+      >
+    </div>
+
+    <h5>MLOps</h5>
+    <div class="course-org">Professional Training</div>
+    <div class="course-date">2025</div>
+  </div>
+
+</div>
+
+<!-- REFERENCES -->
+<section id="references" class="section references">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-user-check"></i> References</span>
+      <h2>All Supervisors &amp; References</h2>
+      <p>Academic mentors and professional references</p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref-card" data-aos="fade-up">
+        <h5>Dr. Momotaz Begum</h5>
+        <div class="ref-role">Head &amp; Professor, Dept. of CSE</div>
+        <div class="ref-inst">DUET, Gazipur</div>
+        <div class="ref-lines">
+          <div class="ref-line"><i class="fas fa-phone"></i> +880 1907621451</div>
+          <div class="ref-line"><i class="fas fa-envelope"></i> drmomotaz@duet.ac.bd</div>
+        </div>
+      </div>
+      <div class="ref-card" data-aos="fade-up" data-aos-delay="100">
+        <h5>Dr. Mohammad Abdur Rouf</h5>
+        <div class="ref-role">Professor, Dept. of CSE</div>
+        <div class="ref-inst">DUET, Gazipur</div>
+        <div class="ref-lines">
+          <div class="ref-line"><i class="fas fa-phone"></i> 09666-327752</div>
+          <div class="ref-line"><i class="fas fa-envelope"></i> marouf.cse@duet.ac.bd</div>
+        </div>
+      </div>
+      <div class="ref-card" data-aos="fade-up" data-aos-delay="200">
+        <h5>Mr. Md. Abu Bakkar Siddique</h5>
+        <div class="ref-role">Assistant Professor, Dept. of CSE</div>
+        <div class="ref-inst">DUET, Gazipur</div>
+        <div class="ref-lines">
+          <div class="ref-line"><i class="fas fa-phone"></i> 09666-327774</div>
+          <div class="ref-line"><i class="fas fa-envelope"></i> absiddique@duet.ac.bd</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <div class="container-custom">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-tag"><i class="fas fa-paper-plane"></i> Contact</span>
+      <h2>Let's Connect</h2>
+      <p>Get in touch for collaborations, research opportunities, or inquiries</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card" data-aos="fade-right">
+        <h3>Contact Information</h3>
+        <p>Feel free to reach out via any of these channels. I'm always open to discussing research, collaborations, or innovative ideas.</p>
+        <div class="contact-line">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <div class="lbl">Email</div>
+            <div class="val">204014@student.duet.ac.bd</div>
+          </div>
+        </div>
+        <div class="contact-line">
+          <i class="fas fa-phone"></i>
+          <div>
+            <div class="lbl">Phone</div>
+            <div class="val">+880 1848 189959</div>
+          </div>
+        </div>
+        <div class="contact-line">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <div class="lbl">Location</div>
+            <div class="val">Gazipur, Dhaka, Bangladesh</div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" title="Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+          <a href="#" title="Hugging Face"><i class="fas fa-robot"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card" data-aos="fade-left">
+        <h3>Send a Message</h3>
+        <form id="contactForm">
+          <div class="form-field"><input type="text" placeholder="Your Name" required></div>
+          <div class="form-field"><input type="email" placeholder="Your Email" required></div>
+          <div class="form-field"><input type="text" placeholder="Subject" required></div>
+          <div class="form-field"><textarea placeholder="Your Message" required></textarea></div>
+          <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container-custom">
+    <div class="footer-grid">
+      <div>
+        <h4>Abdur Rouf</h4>
+        <p class="footer-about-txt">Computer Science Engineer and AI Researcher with expertise in Machine Learning, Deep Learning, Computer Vision, XAI, NLP, and MLOps. Passionate about building explainable and intelligent systems for real-world impact.</p>
+        <div class="contact-socials">
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" title="Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <div class="footer-links-list">
+          <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
+          <a href="#about"><i class="fas fa-chevron-right"></i> About</a>
+          <a href="#education"><i class="fas fa-chevron-right"></i> Education</a>
+          <a href="#publications"><i class="fas fa-chevron-right"></i> Research</a>
+          <a href="#works"><i class="fas fa-chevron-right"></i> Works</a>
+          <a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a>
+          <a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-list">
+          <div><i class="fas fa-envelope"></i> 204014@student.duet.ac.bd</div>
+          <div><i class="fas fa-phone"></i> +880 1848 189959</div>
+          <div><i class="fas fa-map-marker-alt"></i> Gazipur, Dhaka, Bangladesh</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Abdur Rouf. All Rights Reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:#75d69c;"></i> for research &amp; innovation</span>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="abstractModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('abstractModal')"><i class="fas fa-times"></i></button>
+    <div id="abstractContent"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="infoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('infoModal')"><i class="fas fa-times"></i></button>
+    <h3 class="modal-title" id="infoTitle"></h3>
+    <p class="modal-content-text" id="infoDesc"></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mediaModal">
+  <div class="media-box">
+    <button class="media-close" onclick="closeModal('mediaModal')"><i class="fas fa-times"></i></button>
+    <img id="mediaImage" src="" alt="Media" style="display:none;">
+    <video id="mediaVideo" controls style="display:none;"></video>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 900, once: true, offset: 80 });
+
+/* ===== PAPERS DATA ===== */
+
+const papersData = [
+
+  {
+    title: "Global-Local Feature-Based Rice Leaf Disease Classification Using Two-Stream Deep Neural Network Feature Fusion",
+    authors: "Md Nahidur Rahaman, Abdullah Al Mamun, Md. Kamal Hossen, Abdur Rouf, Tumpa Rani Shah, Jungpil Shin, Mohd. Nizam Husen, and Abu Saleh Musa Miah",
+    venue: "Computers, MDPI, 2026 (Published)",
+    abstract: "Rice leaf diseases significantly affect crop health and yield potential, creating a need for accurate and timely disease diagnosis. Many existing approaches still rely on single-stream feature extraction architectures, which may limit the ability to simultaneously capture global contextual information and fine-grained disease characteristics. Moreover, limited interpretability and decision-support capability hinder their practical deployment in real-world rice farming. To address these limitations, we employed a framework consists of two parallel feature extraction streams designed to capture different characteristics of disease patterns. The first stream uses a Swin Transformer to learn global contextual information and long-range spatial relationships across the leaf image. The second stream employs ConvNeXt to extract local texture features, including lesion details, spots, and color variations. By combining these complementary representations, the proposed framework effectively integrates global semantic information with local disease-specific features for improved classification performance. The extracted features from the two streams are fused through concatenation followed by an attention-based feature refinement module, enabling adaptive weighting of discriminative features. The refined representation is then used by a fully connected classifier for disease prediction. To enhance model interpretability, Grad-CAM visualization is incorporated to highlight disease-relevant regions and provide visual explanations for the model decisions. Furthermore, an LLM-based advisory module is integrated as a post-diagnosis decision-support component to provide contextualized disease management information and suggestions based on the predicted disease category. The generated suggestions are intended to support, rather than replace, expert agronomic recommendations and should be validated by agricultural professionals before practical application. The proposed framework was evaluated on two rice leaf disease datasets, achieving accuracies of 99.55% and 97.06% on Dataset-1 and Dataset-2, respectively, which are higher than those reported in previous studies. Additionally, five-fold cross-validation on Dataset-1 achieved an average accuracy of 98.91% ± 0.47, demonstrating the stability of the proposed approach. Cross-dataset evaluation using nine common disease classes across both datasets achieved 90.80% accuracy, indicating improved generalization across different data distributions. The proposed framework provides an accurate and explainable approach for rice leaf disease diagnosis in smart agriculture applications."
+  },
+
+  {
+    title: "A Smart Line-Following Robot for Emergency Medical Supply and Real-Time Tracking using RFID",
+    authors: "Abdur Rouf, Osama Abdul Hannan, Abdulla Al-Kibria, and Mohammad Abdur Rouf",
+    venue: "2026 IEEE QPAIN (Published)",
+    abstract: "COVID-19, MERS, SARS, Ebola, and similar pandemics necessitate the extension of healthcare facilities to such patients to minimize direct interaction with doctors, nurses, and attendants. This paper implemented a Smart Line-Following Robot (SLFR) to deliver emergency supplies, including medicines, food, water, and utensils, to quarantined patients. The SLFR consists of four separate chambers, which allow it to deliver to four individual patients at a time. Two tracks are implemented: a prototype track (10.04 meters) for testing functionality and a real-time hospital track (49.95 meters) simulating the hospital environment. The real-time route enables delivery to four beds in two wards within 139.47 seconds. Additionally, Radio Frequency Identification (RFID) tracking integration provides real-time location of the SLFR to the nurse station, which enhances the reliability of the system."
+  },
+
+  {
+    title: "DLRA-MSTFNet: Explainable Lung Disease Classification from Chest X-ray Images with RAG-Based Clinical Guidance",
+    authors: "Md Nahidur Rahaman, Abdur Rouf, Raju Mia, S. M. Abdullah Al Shuaeb, and Ferdaus Anam Jibon",
+    venue: "2026 IEEE BECITHCON (Accepted)",
+    abstract: "Accurate and correct classification of lung diseases from chest X-ray images is important for timely clinical decision making and helps clinicians better interpret radiographic findings. In this paper, we aim to build an explainable, robust and automated deep learning system for classification of lung diseases from chest X-ray images. We therefore propose a joint DLRA-MSTFNet framework, which includes a ConvNeXt Tiny backbone, two attention modules, namely Dynamic Lesion Routing Attention (DLRA) and Multi-Scale Transformer Fusion (MSTF), and Lesion-Sensitive Max Pooling (LSMP) for lesion aware feature learning. Furthermore, the model predictions are visually explained by Grad-CAM and the clinically meaningful guidance is generated by the Retrieval-Augmented Generation (RAG) module according to the predicted disease class. The experiments were conducted on a publicly available five class dataset comprising of classes Bacterial Pneumonia, COVID-19, Normal, Tuberculosis and Viral Pneumonia. The proposed model outperformed many of the baseline models with a test accuracy of 98.92%, a precision of 99.10%, a recall of 97.67% and an F1-score of 98.38%. The results show the effectiveness, interpretability and practical applicability of the proposed framework for automatic classification of lung diseases from chest X-ray images."
+  },
+
+  {
+    title: "A Dynamic Lesion-Aware Multi-Scale Deep Learning Framework for Explainable Nitrogen Status Classification in Eggplant Leaves",
+    authors: "Abdur Rouf, Md Nahidur Rahaman, Raju Mia, and S. M. Abdullah Al Shuaeb",
+    venue: "Image and Vision Computing, 2026 (Under Review)",
+    abstract: "This work introduces a dynamic lesion-aware multi-scale deep learning framework for classifying nitrogen status in eggplant leaves. The model adaptively focuses on lesion regions and extracts features at multiple scales to accurately assess nitrogen deficiency. Explainability techniques are incorporated to visualize the decision-making process, helping agricultural experts understand the basis of classification. The framework aims to support precision agriculture by enabling timely nitrogen management."
+  },
+
+  {
+    title: "A Hybrid Multi-Backbone Deep Learning Framework with Learnable Attention Fusion for Explainable Potato Leaf Disease Detection",
+    authors: "Md. Nahidur Rahaman, Abdur Rouf, S. M. Abdullah Al Shuaeb, Jahid Hasan Rony, Mohammad Ariful Islam, Muhammad Aminur Rahaman, Saiful Saiful, and Abdullah Al Mamun",
+    venue: "IEEE CSDE 2026 (Under Review)",
+    abstract: "Potato leaf diseases, particularly early blight and late blight, significantly reduce crop yield and quality, making accurate and timely diagnosis essential. This paper introduces a hybrid multi-backbone deep learning framework, which com- bines EfficientNet-V2-S, Swin Transformer and ViT-Base, and introduces a Learnable Attention Fusion (LAF) module to cap- ture complementary local and global feature representations. A progressive layer-freezing approach is used to enhance transfer learning and model generalization. The proposed framework is tested in terms of 5-fold cross validation and cross dataset testing. The experimental results are obtained with good average classification accuracy of 99.47% for 5-fold cross validation and 97.34% for cross-dataset evaluation, exhibiting good robustness and generalization capability for different data distributions. Moreover, Grad-CAM is used to give visual interpretation of model predictions by identifying the relevant areas of the image associated with the disease. The proposed model is used as a web application for practical agricultural applications, allowing iden- tification of potato leaf diseases in real-time based on uploaded leaf images. From the experimental results, it is proved that the proposed framework gives an accurate, robust and interpretable solution for the potato leaf disease automatic classification."
+
+  },
+
+  {
+    title: "An Intelligent Multi-Scale Lesion Attention Transformer Framework with Retrieval-Augmented Farmer Guidance for Onion Leaf Disease Diagnosis",
+    authors: "Abdur Rouf, Md Nahidur Rahaman, S. M. Abdullah Al Shuaeb, Jahid Hasan Rony, Mohammad Ariful Islam, Muhammad Aminur Rahaman, Saiful Saiful, and Abdullah Al Mamun",
+    venue: "IEEE CSDE 2026 (Under Review)",
+    abstract: "Onion diseases have been a significant hurdle for crop production, resulting in huge crop losses. It is necessary to detect and identify diseases quickly and correctly for effective disease management. This paper proposes a deep learning frame- work for identifying onion leaf diseases automatically. Our data collection methodology involves capturing images of onions grown in the field under various conditions in Faridpur, Bangladesh. We used our collected images for classifying diseases through the proposed method.Our proposed framework utilizes EfficientNet- B4 along with a lesion attention mechanism and multi-scale feature fusion by transformers to increase feature extraction and classification capability of the network. To make our model more transparent, we have used the XAI approach to explain our prediction using a Grad-CAM visualization technique to help in understanding which region is important for predicting the infection. Furthermore, our model suggests a treatment strategy based on RAG guidance module. As per experimental results, our proposed model performs with 98.65% classification accuracy"
+  },
+
+  {
+    title: "An Image-Based Brinjal Dataset for Nitrogen Deficiency Detection and Chlorophyll-Based Quality Assessment in Bangladesh",
+    authors: "Md. Nahidur Rahaman, Abdur Rouf, S. M. Abdullah Al Shuaeb, Raju Mia, and Md. Mizanur Rahman",
+    venue: "Data in Brief, 2026 (Under Review)",
+    abstract: "This data article presents a novel image-based brinjal (eggplant) dataset collected in Bangladesh for nitrogen deficiency detection and chlorophyll-based quality assessment. The dataset includes high-resolution images of brinjal leaves at different nitrogen levels, along with corresponding chlorophyll measurements. This resource enables researchers to develop and benchmark machine learning models for automated nitrogen status classification and crop quality assessment, supporting precision agriculture in Bangladesh and similar regions."
+  }
+
+];
+
+  const confAbstracts = [
+    { title:"A Smart Line-Following Robot for Emergency Medical Supply and Real-Time Tracking using RFID", authors:"Abdur Rouf, Osama Abdul Hannan, Abdulla Al-Kibria, and Mohammad Abdur Rouf", venue:"2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence & Networking (QPAIN)",     abstract: "COVID-19, MERS, SARS, Ebola, and similar pandemics necessitate the extension of healthcare facilities to such patients to minimize direct interaction with doctors, nurses, and attendants. This paper implemented a Smart Line-Following Robot (SLFR) to deliver emergency supplies, including medicines, food, water, and utensils, to quarantined patients. The SLFR consists of four separate chambers, which allow it to deliver to four individual patients at a time. Two tracks are implemented: a prototype track (10.04 meters) for testing functionality and a real-time hospital track (49.95 meters) simulating the hospital environment. The real-time route enables delivery to four beds in two wards within 139.47 seconds. Additionally, Radio Frequency Identification (RFID) tracking integration provides real-time location of the SLFR to the nurse station, which enhances the reliability of the system." },
+    { title:"DLRA-MSTFNet: Explainable Lung Disease Classification from Chest X-ray Images with RAG-Based Clinical Guidance", authors:"Md Nahidur Rahaman, Abdur Rouf, Raju Mia, S. M. Abdullah Al Shuaeb, and Ferdaus Anam Jibon", venue:"2026 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)", abstract: "Accurate and correct classification of lung diseases from chest X-ray images is important for timely clinical decision making and helps clinicians better interpret radiographic findings. In this paper, we aim to build an explainable, robust and automated deep learning system for classification of lung diseases from chest X-ray images. We therefore propose a joint DLRA-MSTFNet framework, which includes a ConvNeXt Tiny backbone, two attention modules, namely Dynamic Lesion Routing Attention (DLRA) and Multi-Scale Transformer Fusion (MSTF), and Lesion-Sensitive Max Pooling (LSMP) for lesion aware feature learning. Furthermore, the model predictions are visually explained by Grad-CAM and the clinically meaningful guidance is generated by the Retrieval-Augmented Generation (RAG) module according to the predicted disease class. The experiments were conducted on a publicly available five class dataset comprising of classes Bacterial Pneumonia, COVID-19, Normal, Tuberculosis and Viral Pneumonia. The proposed model outperformed many of the baseline models with a test accuracy of 98.92%, a precision of 99.10%, a recall of 97.67% and an F1-score of 98.38%. The results show the effectiveness, interpretability and practical applicability of the proposed framework for automatic classification of lung diseases from chest X-ray images." }
+  ];
+
+  /* ===== MODAL HANDLERS ===== */
+  function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+
+  window.openInfo = function(title, desc){
+    document.getElementById('infoTitle').textContent = title;
+    document.getElementById('infoDesc').textContent = desc;
+    openModal('infoModal');
+  };
+
+  window.openMedia = function(src, type){
+    const img = document.getElementById('mediaImage');
+    const vid = document.getElementById('mediaVideo');
+    if(type === 'image'){
+      img.src = src; img.style.display = 'block';
+      vid.style.display = 'none'; vid.pause(); vid.src = '';
+    } else {
+      img.style.display = 'none'; img.src = '';
+      vid.src = src; vid.style.display = 'block'; vid.play().catch(()=>{});
+    }
+    openModal('mediaModal');
+  };
+
+  function buildAbstract(p){
+    return `<h3 class="modal-title">${p.title}</h3>
+      <div class="modal-authors"><i class="fas fa-users"></i> ${p.authors}</div>
+      <div class="modal-venue"><i class="fas fa-book"></i> ${p.venue}</div>
+      <div class="modal-abstract">
+        <h4><i class="fas fa-align-left"></i> Abstract</h4>
+        <p>${p.abstract}</p>
+      </div>`;
+  }
+  window.openConfAbstract = function(i){ document.getElementById('abstractContent').innerHTML = buildAbstract(confAbstracts[i]); openModal('abstractModal'); };
+
+  document.querySelectorAll('.pub-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.paperIndex);
+      if(!isNaN(idx) && papersData[idx]){ document.getElementById('abstractContent').innerHTML = buildAbstract(papersData[idx]); openModal('abstractModal'); }
+    });
+  });
+
+  // Close modal on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(o => {
+    o.addEventListener('click', (e) => { if(e.target === o){ o.classList.remove('open'); document.body.style.overflow=''; } });
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open')); document.body.style.overflow=''; }
+  });
+
+  /* ===== PUB FILTERS ===== */
+  document.querySelectorAll('.pub-filter').forEach(btn => {
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const f = this.dataset.filter;
+      document.querySelectorAll('.pub-card').forEach(c => {
+        c.style.display = (f === 'all' || c.dataset.category === f) ? 'flex' : 'none';
+      });
+    });
+  });
+
+/* ===== Multi-image Slider for Work Cards ===== */
+document.querySelectorAll('[data-slider]').forEach(slider => {
+  const slides = slider.querySelectorAll('.slide');
+  const dots = slider.querySelectorAll('.dot');
+  if (slides.length < 2) return;
+  let current = 0;
+  let timer;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current]?.classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current]?.classList.add('active');
+  }
+  function next() { goTo(current + 1); }
+  function start() { timer = setInterval(next, 3000); }
+  function stop() { clearInterval(timer); }
+
+  // Click dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goTo(i);
+      stop(); start();
+    });
+  });
+
+  // Pause on hover
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+
+  // Start auto-slide
+  start();
+});
+
+
+
+
+  /* ===== SCROLL BEHAVIORS ===== */
+  const navbar = document.getElementById('navbar');
+  const scrollTop = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+    if(window.scrollY > 400) scrollTop.classList.add('show'); else scrollTop.classList.remove('show');
+  });
+  scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if(href === '#') return;
+      const t = document.querySelector(href);
+      if(t){ e.preventDefault(); window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); }
+    });
+  });
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = 'home';
+    sections.forEach(s => { if(window.scrollY >= s.offsetTop - 200) current = s.id; });
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  /* ===== SKILL BARS ===== */
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.width; }, 100);
+        });
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-box').forEach(b => skillObserver.observe(b));
+
+  /* ===== CONTACT FORM ===== */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Thank you! Your message has been sent (demo).');
+    this.reset();
+  });
+
+  // Mobile nav (simple)
+  document.getElementById('navToggle').addEventListener('click', () => {
+    const menu = document.querySelector('.nav-menu');
+    if(menu.style.display === 'flex'){ menu.style.display = 'none'; }
+    else { menu.style.display = 'flex'; menu.style.position = 'absolute'; menu.style.top = '80px'; menu.style.right = '24px'; menu.style.flexDirection = 'column'; menu.style.background = 'white'; menu.style.padding = '16px'; menu.style.borderRadius = '20px'; menu.style.boxShadow = '0 20px 40px -12px rgba(15,81,50,0.25)'; }
+  });
+</script>
+</body>
+</html>
